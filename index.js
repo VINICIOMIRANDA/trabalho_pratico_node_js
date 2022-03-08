@@ -96,8 +96,8 @@ app.get("/marcas/listaMaisModelos/:id", async (req, res, next) => {
         var valor2Alfabeto1 = i1.brand.charCodeAt(1);
         var valor2Alfabeto2 = i2.brand.charCodeAt(1);
 
-        console.log("valorAlfabeto1" + valorAlfabeto1);
-        console.log("valorAlfabeto2" + valorAlfabeto2);
+     //   console.log("valorAlfabeto1" + valorAlfabeto1);
+     //   console.log("valorAlfabeto2" + valorAlfabeto2);
         if (valorAlfabeto1 < valorAlfabeto2) {
           return -1;
         } else if (valorAlfabeto1 == valorAlfabeto2) {
@@ -170,13 +170,13 @@ app.get("/marcas/listaMenos/:id", async (req, res, next) => {
     //console.log("PAssou por aqui carNomeMarcaMenor.length"+carNomeMarcaMaisModelos[i].models.length+"index"+carNomeMarcaMaisModelos.length);
 
     if (carNomeMarcaMenosModelos[i].models.length < parseInt(req.params.id)) {
-      console.log("buscador2");
-      console.log("Entrou no if");
+    //  console.log("buscador2");
+    //  console.log("Entrou no if");
       novoMarca = carNomeMarcaMenosModelos[i].brand;
-      console.log("novoMarca" + novoMarca);
+  //    console.log("novoMarca" + novoMarca);
 
       novoModelo = carNomeMarcaMenosModelos[i].models.length;
-      console.log("novoModelo" + novoModelo);
+  //    console.log("novoModelo" + novoModelo);
       elementosAlterados.push(novoMarca + "-" + novoModelo);
       console.log(elementosAlterados);
     }
@@ -186,16 +186,16 @@ app.get("/marcas/listaMenos/:id", async (req, res, next) => {
 });
 
 app.post("/marcas/listaModelos", async (req, res, next) => {
-  console.log("Entou no post");
+//console.log("Entou no post");
 
   const data = JSON.parse(await fs.readFile(global.filename));
 
   let listaBody = req.body;
 
-  console.log("listaBody" + listaBody.nomeMarca);
+//  console.log("listaBody" + listaBody.nomeMarca);
   let nomeMarca = listaBody.nomeMarca;
   // console.log(nomeMarca.toLowerCase());
-  console.log("CONTADOR" + nomeMarca);
+//  console.log("CONTADOR" + nomeMarca);
 
   let novoMarca;
   let novoModelo;
@@ -208,8 +208,8 @@ app.post("/marcas/listaModelos", async (req, res, next) => {
     if (nomeMarca.toLowerCase() == data[i].brand.toLowerCase()) {
       novoMarca = data[i].brand;
       novoModelo = data[i].models;
-      console.log("nomeMarca.toLowerCase()" + nomeMarca.toLowerCase());
-      console.log("data[i].brand.toLowerCase()" + data[i].brand.toLowerCase());
+    //  console.log("nomeMarca.toLowerCase()" + nomeMarca.toLowerCase());
+    //  console.log("data[i].brand.toLowerCase()" + data[i].brand.toLowerCase());
       elementosAlterados.push([novoMarca, novoModelo]);
     }
   }
@@ -221,5 +221,5 @@ app.post("/marcas/listaModelos", async (req, res, next) => {
 
 app.listen(3000, () => {
   console.log("Api rodando!!");
-  console.log(filename);
+
 });
